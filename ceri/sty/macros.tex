@@ -1,0 +1,55 @@
+% ---------------------- ADDITIONAL PACKAGES ----------------------
+
+\usepackage{../ceri/sty/quiver}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{efbox}
+\usepackage{tcolorbox}
+
+\usepackage{pstricks}
+
+\usepackage{tasks}
+\settasks{label=\textbf{\alph*.}, label-offset = 1em, column-sep = 1.5em}
+
+% ----------------------
+
+% ---------------------- ADDITONAL ENVIRONMENTS ----------------------
+\tcbuselibrary{skins,breakable}
+\newenvironment{Bbox}[1][fg2]{%
+    \tcolorbox[%
+        empty,
+        parbox=false,
+        noparskip,
+        enhanced,
+        breakable,
+        frame hidden, % default frame hidden
+        boxrule=0pt, % default frame hidden
+        colback=bg,
+        left=-4pt, right=-4pt,
+        before skip=4ex plus 2pt,
+        after skip=3.5ex plus 2pt,
+        overlay unbroken and last={% new frame
+                \draw[color=#1, line width=1.25pt]
+                ($(frame.north west)+(-1em, .5ex)$)
+                rectangle ($(frame.south east)+(1em, -.5ex)$);
+            }]
+}{\endtcolorbox}
+
+\theoremstyle{definition}
+\newtheorem*{exsT}{Exemples}
+
+\newenvironment{exs}[1][\hfill]{\begin{exsT}{#1}\begin{enumerate}[wide,label=\textbf{\arabic*.}]}{\end{enumerate}\end{exsT}}
+% ----------------------
+
+% ---------------------- MACROS ----------------------
+
+\newcommand\Danger{\begingroup
+    \psset{unit=1ex}%
+    \begin{pspicture}(0,0)(3,3)
+        \pspolygon[linearc=0.2,linewidth=0.3,linecolor=rema](0,0)(1.5,2.6)(3,0)
+        \psellipse*(1.5,1.33)(0.14,0.75)\pscircle*(1.5,0.3){0.15}\end{pspicture}%
+    \endgroup}%
+
+\renewcommand{\vec}{\overrightarrow}
+
+% ----------------------

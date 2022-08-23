@@ -1,0 +1,88 @@
+% PALETTES FOR THE CLASSES "MasterNotes", "MasterArticle" ans "MasterLessons"
+
+% Palettes provided from
+% <https://coolors.co/>
+
+% In order :
+% - Title page, subtitles and hyperlinks
+% - Chapter titles
+% - Theorems
+% - Definitions
+% - Remarks
+% - Corollaries
+
+% "verdura" palette option
+\DeclareOption{verdura}{
+     \ColorSetup{073b3a} % #073b3a % Title page, subtitles and hyperlink
+                {0b6e4f} % #0b6e4f % Chapter titles
+                {08a045} % #08a045 % Theorems
+                {6bbf59} % #6bbf59 % Definitions
+                {addf91} % #addf91 % Remarks
+                {efffc8} % #efffc8 % Corollaries
+    \setclass{Seconde}
+    \settheme{Nombres et calculs}
+}
+
+% "firewatch" palette option
+\DeclareOption{firewatch}{
+    \ColorSetup{2c112b} % #2c112b % Title page, subtitles and hyperlink
+               {520833} % #520833 % Chapter titles
+               {8d193a} % #8d193a % Theorems
+               {c72a40} % #c72a40 % Definitions
+               {ff6c40} % #ff6c40 % Remarks
+               {fde577} % #fde577 % Corollaries
+    \setclass{Seconde}
+    \settheme{Géométrie}
+}
+
+% "lavanda" palette option
+\DeclareOption{lavanda}{
+    \ColorSetup{3c096c} % #3c096c % Title page, subtitles and hyperlink
+               {5a189a} % #5a189a % Chapter titles
+               {7b2cbf} % #7b2cbf % Theorems
+               {9d4edd} % #9d4edd % Definitions
+               {c77dff} % #c77dff % Remarks
+               {e0aaff} % #e0aaff % Corollaries
+    \setclass{Seconde}
+    \settheme{Fonctions}
+}
+
+% "azuria" palette option
+\DeclareOption{azuria}{
+    \ColorSetup{00234b} % #00234b % Title page, subtitles and hyperlink
+               {00498d} % #00498d % Chapter titles
+               {0076c6} % #0076c6 % Theorems
+               {1bbbf5} % #1bbbf5 % Definitions
+               {aaedfe} % #aaedfe % Remarks
+               {f1fdfd} % #f1fdfd % Corollaries
+    \setclass{Seconde}
+    \settheme{Statistiques et probabilités}
+}
+
+% "redwine" palette option
+\DeclareOption{sangria}{
+    \ColorSetup{800f2f} % #800f2f % Title page, subtitles and hyperlink
+               {a4133c} % #a4133c % Chapter titles
+               {c9184a} % #c9184a % Theorems
+               {ff4d6d} % #ff4d6d % Definitions
+               {ff758f} % #ff758f % Remarks
+               {ff91a5} % #ff91a5 % Corollaries
+    \setclass{Seconde}
+    \settheme{Algorithmique et programmation}
+}
+% PYTHON CODE COMMAND PROVIDER :
+
+% def make_palette(name, c1, c2, c3, c4, c5, c6):
+%     print('% "'+ name +'" palette option')
+%     print(
+% """\DeclareOption{""" + name + """}{
+%      \ColorSetup{""" + c1 + """} % #""" + c1 + """ % Title page, subtitles and hyperlink
+%                 {""" + c2 + """} % #""" + c2 + """ % Chapter titles
+%                 {""" + c3 + """} % #""" + c3 + """ % Theorems
+%                 {""" + c4 + """} % #""" + c4 + """ % Definitions
+%                 {""" + c5 + """} % #""" + c5 + """ % Remarks
+%                 {""" + c6 + """} % #""" + c6 + """ % Corollaries
+% }"""
+%   )
+
+% ----------------------
