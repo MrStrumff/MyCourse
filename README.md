@@ -30,4 +30,4 @@ My personnal LaTeX class for writing my high school courses.
 
 In `eleve` mode
 - `\Trouer{text}` replace the `text` by dots
-- '\TrouerL[num-lines]{text}' replace the `text` by `num-lines` lines of dots
+- `\TrouerL[num-lines]{text}` replace the `text` by `num-lines` lines of dots
