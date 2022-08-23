@@ -5,4 +5,5 @@ My personnal LaTeX class for writing my high school courses.
 
 - Customizable color palette
 - Customizable title pages
-- Fully \TeX support
+- Full math support
+- Custom theorem environments
