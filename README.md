@@ -10,7 +10,7 @@ My personnal LaTeX class for writing my high school courses.
 - Text with holes
 - Main text font : Inter Sans
 - Math main font : STIX Two Math
-- Math font for blackboard letter : Cambria Math
+- Math font for blackboard letters : Cambria Math
 
 ## Custom environments
 
