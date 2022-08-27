@@ -107,6 +107,13 @@
 
 % ----------------------
 % INIT MATH
+\RequirePackage{cancel}
+\RequirePackage{amssymb, amsmath}
+
+\RequirePackage{unicode-math} % Init. math font
+
+\setmathfont[]{STIX Two Math}
+\setmathfont[range={\mathbb}]{Cambria Math} % Font changed for the "BlackBoard" math
 \makeatletter
 \count@=`A \advance\count@\m@ne
 \@whilenum\count@<`Z\do{%
@@ -119,13 +126,6 @@
     {\count@}
 }
 \makeatother % Makes Capital letters in Roman as default in formulas
-\RequirePackage{cancel}
-\RequirePackage{amssymb, amsmath}
-
-\RequirePackage{unicode-math} % Init. math font
-
-\setmathfont[]{STIX Two Math}
-\setmathfont[range={\mathbb}]{Cambria Math} % Font changed for the "BlackBoard" math
 % ----------------------
 
 % ----------------------
