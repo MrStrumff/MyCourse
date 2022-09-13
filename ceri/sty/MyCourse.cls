@@ -13,7 +13,7 @@
 % ----------------------
 % INIT CLASS
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{../ceri/sty/MyCourse}[02/08/2022 - v1.0]
+\ProvidesClass{../MyCourse/ceri/sty/MyCourse}[02/08/2022 - v1.0]
 \LoadClassWithOptions{article}                          % based on the article LaTeX class
 % ----------------------
 
@@ -86,7 +86,7 @@
 
 \setsansfont{Inter}[                       % set up custom font
     Extension = .ttf,
-    Path = ../ceri/fonts/Inter-Sans/,
+    Path = ../MyCourse/ceri/fonts/Inter-Sans/,
     UprightFont = *-Regular,
     BoldFont = *-Bold,
     ItalicFont = *-Italic,
