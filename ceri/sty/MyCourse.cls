@@ -436,7 +436,7 @@
 
 % Option commands in "options.sty" file
 
-\input{../ceri/sty/options.sty}
+\input{../MyCourse/ceri/sty/options.sty}
 % ----------------------
 
 % ----------------------
