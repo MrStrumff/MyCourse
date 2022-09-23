@@ -86,7 +86,7 @@
 
 \setsansfont{Inter}[                       % set up custom font
     Extension = .ttf,
-    Path = ..MyCourse/ceri/fonts/Inter-Sans/,
+    Path = ../MyCourse/ceri/fonts/Inter-Sans/,
     UprightFont = *-Regular,
     BoldFont = *-Bold,
     ItalicFont = *-Italic,
@@ -114,7 +114,6 @@
 
 \setmathfont[]{STIX Two Math}
 \setmathfont[range={\mathbb}]{Cambria Math} % Font changed for the "BlackBoard" math
-
 \makeatletter
 \count@=`A \advance\count@\m@ne
 \@whilenum\count@<`Z\do{%
@@ -244,7 +243,6 @@
         innertopmargin=-3pt,
         leftmargin=0cm,
         rightmargin=0cm,
-        botommargin=.5cm,
         linewidth=1.25pt,
         innerbottommargin=5pt
     ]{#1Box}
@@ -265,7 +263,6 @@
         innertopmargin=-3pt,
         leftmargin=0cm,
         rightmargin=0cm,
-        botommargin=.5cm,
         linewidth=1.25pt,
         innerbottommargin=5pt
     ]{#1Box*}
@@ -286,7 +283,6 @@
         innertopmargin=-3pt,
         leftmargin=0cm,
         rightmargin=0cm,
-        botommargin=.5cm,
         linewidth=1.25pt,
         innerbottommargin=5pt
     ]{#1Boxs}
