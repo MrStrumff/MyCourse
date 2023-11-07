@@ -8,6 +8,7 @@ My personnal LaTeX class for writing my high school courses.
 - Full math support
 - Custom theorem environments
 - Text with holes
+- Fancy boxes
 - Main text font : Inter Sans
 - Math main font : STIX Two Math
 - Math font for blackboard letters : Cambria Math
@@ -24,10 +25,14 @@ My personnal LaTeX class for writing my high school courses.
 - `exo`, `exos`, `exo*` environments for exercises
 - `rep`, `reps` environments for answers to exercises
 - `meth`, `meths`, `meth*` environments for methods
+- `resume` environment for a box with a customisable title
+- `exotc` environment for a box with a numbered titled exercise.
 - `demo` environment for proofs
 
 ## Specific macros
 
-In `eleve` mode
+In `eleve` mode (default)
 - `\Trouer{text}` replace the `text` by dots
 - `\TrouerL[num-lines]{text}` replace the `text` by `num-lines` lines of dots
+
+To switch between `eleve` and `prof` mode, use the macro `\ToProf` to enable `prof` mode and display texts hidden by the `\Trouer` and `\TrouerL` commands.
