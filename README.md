@@ -9,7 +9,7 @@ My personnal LaTeX class for writing my high school courses.
 - Custom theorem environments
 - Text with holes
 - Fancy boxes
-- Main text font : Inter Sans
+- Main text font and math numbers : Inter Sans
 - Math main font : STIX Two Math
 - Math font for blackboard letters : Cambria Math
 
