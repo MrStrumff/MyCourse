@@ -135,7 +135,7 @@
 
 \setsansfont{KarasumaGothic}[                       % set up custom font
     Extension = .otf,
-    Path = ceri/fonts/KarasumaGothic/,
+    Path = ceri/fonts/Inter-Sans/,
     UprightFont = *-Regular,
     BoldFont = *-Bold,
     ItalicFont = *-Italic,
