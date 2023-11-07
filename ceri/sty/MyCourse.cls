@@ -1,6 +1,6 @@
 % ----------------------
 % "MyCourse" LaTeX class
-% v1.0 - 28/07/2022
+% v1.1 - 28/09/2023
 %
 % Alexis Pic
 %
@@ -13,8 +13,8 @@
 % ----------------------
 % INIT CLASS
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{../MyCourse/ceri/sty/MyCourse}[02/08/2022 - v1.0]
-\LoadClassWithOptions{article}                          % based on the article LaTeX class
+\ProvidesClass{ceri/sty/MyCourse}[02/08/2022 - v1.0]
+\LoadClassWithOptions{extarticle}                          % based on the article LaTeX class
 % ----------------------
 
 % ----------------------
@@ -30,10 +30,10 @@
 % \definecolor{fg}{HTML}{000000}
 
 \newcommand\dunderline[3][-1pt]{{%
-  \sbox0{#3}%
-  \ooalign{
-    \copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}
-}}}
+            \sbox0{#3}%
+            \ooalign{
+                \copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}
+            }}}
 
 \makeatletter
 \newcommand\MyTitle{
@@ -43,20 +43,20 @@
     \begin{center}
         \begin{tikzpicture}[remember picture,overlay]
             \tikzset{shift=($(current page.north west)$)}
-            \node[anchor=north west, inner sep=0pt] at ($(current page.north west)$) {
-                \adjincludegraphics[width=.8\paperwidth, page=1, trim={0 {.193\imageheight} 0 {.193\imageheight}}, clip=true]{\titlepicture}
-             };
+            \node[anchor=north west, inner sep=0pt] at (4.2cm,0) {
+                \adjincludegraphics[width=.8\paperwidth, page=1, trim={0 {.351\imageheight} 0 {.351\imageheight}}, clip=true]{\titlepicture}
+            };
             \node[
                 anchor=north west,
                 inner sep=0pt, draw=fg,
                 fill=fg, text=bg,
-                minimum height = 5.8cm,
+                minimum height = 2.83cm,
                 minimum width = .195\paperwidth
-            ] (r) at (16.9cm,0) {\fontsize{40}{48}\bfseries\selectfont\titlenumber};%\dunderline[-6pt]{3pt}{\titlenumber}};
+            ] (r) at ($(current page.north west)$) {\fontsize{24}{48}\bfseries\selectfont\titlenumber};%\dunderline[-6pt]{3pt}{\titlenumber}};
         \end{tikzpicture}
     \end{center}
-    \vspace{3.5cm}
-    {\fontsize{30}{35}\selectfont\bfseries\@title}
+    \vspace{0.25cm}
+    {\fontsize{28}{35}\selectfont\bfseries\@title}
     \vspace{.5cm}
     \pagestyle{fancy}
 }
@@ -86,7 +86,7 @@
 
 \setsansfont{Inter}[                       % set up custom font
     Extension = .ttf,
-    Path = ../MyCourse/ceri/fonts/Inter-Sans/,
+    Path = ceri/fonts/Inter-Sans/,
     UprightFont = *-Regular,
     BoldFont = *-Bold,
     ItalicFont = *-Italic,
@@ -111,15 +111,22 @@
 \RequirePackage{amssymb, amsmath}
 
 \RequirePackage{unicode-math} % Init. math font
-
-\setmathfont[]{STIX Two Math}
+\unimathsetup{mathrm=sym}
+\RequirePackage{unicode-math} % Init. math font
+\setmathfont{STIX Two Math}
+\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{STIX Two Math}
+\setmathfont[range={\mathscr},StylisticSet=1]{STIX Two Math}
 \setmathfont[range={\mathbb}]{Cambria Math} % Font changed for the "BlackBoard" math
+\setmathfont[range={up/num}, Path = ceri/fonts/Inter-Sans/]{Inter-Regular.ttf}
+\setmathfont[range={bfup/num}, Path = ceri/fonts/Inter-Sans/]{Inter-Bold.ttf}
+\setmonofont[Path = ceri/fonts/Cascadia-Code/]{CascadiaCode-Bold.ttf}
+
 \makeatletter
 \count@=`A \advance\count@\m@ne
 \@whilenum\count@<`Z\do{%
-  \advance\count@\@ne
-  \begingroup\uccode`a=\count@
-  \uppercase
+    \advance\count@\@ne
+    \begingroup\uccode`a=\count@
+    \uppercase
     {\endgroup\DeclareMathSymbol{a}}
     {\mathalpha}
     {operators}
@@ -130,7 +137,7 @@
 
 % ----------------------
 % FOOTNOTES AND ITEMIZING
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 
 \AddThinSpaceBeforeFootnotes
 \FrenchFootnotes
@@ -167,8 +174,10 @@
 
 \fancypagestyle{firststyle} % for the first page only
 {
-   \fancyhf[cf]{\Footer}
-   \renewcommand{\headrulewidth}{0pt} % removes horizontal header line
+    \fancyhf[cf]{\Footer}
+    \fancyhf[rh]{}
+    \fancyhf[lh]{}
+    \renewcommand{\headrulewidth}{0pt} % removes horizontal header line
 }
 % ----------------------
 
@@ -177,22 +186,22 @@
 \RequirePackage{titlesec}
 
 \titleformat{\section}
-    {\color{fg}\normalfont\Large\bfseries}
-    {\thesection}
-    {1em}
-    {}
+{\color{fg}\normalfont\Large\bfseries}
+{\thesection}
+{1em}
+{}
 
 \titleformat{\subsection}
-    {\color{fg}\normalfont\large\bfseries}
-    {\thesubsection}
-    {1em}
-    {}
+{\color{fg}\normalfont\large\bfseries}
+{\thesubsection}
+{1em}
+{}
 
 \titleformat{\subsubsection}
-    {\color{fg}\normalfont\normalsize\bfseries}
-    {\thesubsubsection}
-    {1em}
-    {}
+{\color{fg}\normalfont\normalsize\bfseries}
+{\thesubsubsection}
+{1em}
+{}
 
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\Roman{section}.\arabic{subsection}}
@@ -331,112 +340,236 @@
 % ----------------------
 % HOLES-IN-TEXT MAKER
 \RequirePackage{multido}
+\RequirePackage{setspace}
 
 % modified version of https://www.developpez.net/forums/d1524021/autres-langages/autres-langages/latex/programmation-tex-avancee/textes-trou/
 \makeatletter
 \newif\if@prof % Boolean for changing mode (teacher or student)
-\@proffalse    % "Student" by default.
+    \@proffalse    % "Student" by default.
 
-\newlength\wordlength
-\newcounter{lines}
+    \newlength\wordlength
+    \newcounter{lines}
 
-% Mode switchers
-\def\ToEleve{\@proffalse}
-\def\ToProf{\@proftrue}
+    % Mode switchers
+    \def\ToEleve{\@proffalse}
+    \def\ToProf{\@proftrue}
 
-\let\Dotfill\dotfill
-\def\dotfill#1{\cleaders\hbox to #1{.}\hfill}
-\newcommand\dotline[2][.5em]{\leavevmode\hbox to #2{\dotfill{#1}\hfil}}
+    \let\Dotfill\dotfill
+    \def\dotfill#1{\cleaders\hbox to #1{.}\hfill}
+    \newcommand\dotline[2][.5em]{\leavevmode\hbox to #2{\dotfill{#1}\hfil}}
 
-% Replace a word by a blank.
-\def\Trouer#1{%
-	\if@prof{#1}%                % If it is the "Teacher" mode, then the hidden word is displayed.
-	\else
-        \settowidth\wordlength{#1}   % Take the length of the word
-        \addtolength\wordlength{2em} % Add 2em to the length
-        \dotline{\wordlength}  % Otherwise we display a dotted line.
-	\fi
+    % Replace a word by a dotted blank.
+    \def\Trouer#1{%
+    \if@prof{#1}%                % If it is the "Teacher" mode, then the hidden word is displayed.
+\else
+    \settowidth\wordlength{#1}   % Take the length of the word
+    \addtolength\wordlength{2em} % Add 2em to the length
+    \dotline{\wordlength}  % Otherwise we display a dotted line.
+\fi
 }
 
-% Replace a line by a blank.
+% Replace a line by a dotted blank.
 \newcommand\TrouerL[2][1]{%
     \setcounter{lines}{#1}
-	\if@prof {#2}%                                                                      % If it is the "Teacher" mode, then the hidden line is displayed.
-	\else
+    \if@prof {#2}%                                                                      % If it is the "Teacher" mode, then the hidden line is displayed.
+    \else
+        \doublespacing
         \ifnum\value{lines}>1                                                          % Otherwise we display dotted lines.
             \addtocounter{lines}{-1}
             \Dotfill\endgraf
             \multido{}{\value{lines}}{\noindent\makebox[\textwidth]{\Dotfill}\endgraf}
         \else \Dotfill                                                                 % Case of a single line.
         \fi
-	\fi
+        \singlespacing
+    \fi
+}
+
+% Replace a word by a dotted blank.
+\def\Blanc#1{%
+    \if@prof{#1}%                % If it is the "Teacher" mode, then the hidden word is displayed.
+    \else
+    \settowidth\wordlength{#1}   % Take the length of the word
+    \addtolength\wordlength{2em} % Add 2em to the length
+    \rule{\wordlength}{0pt}  % Otherwise we display a dotted line.
+    \fi
+}
+
+% Replace a line by a blank.
+\newcommand\BlancL[2][1]{%
+    \setcounter{lines}{#1}
+    \if@prof {#2}%                                                                      % If it is the "Teacher" mode, then the hidden line is displayed.
+    \else
+        \ifnum\value{lines}>1                                                          % Otherwise we display dotted lines.
+            \addtocounter{lines}{-1}
+            \hfill\endgraf
+            \multido{}{\value{lines}}{\noindent\makebox[\textwidth]{\hfill}\endgraf}
+        \else \hfill                                                                 % Case of a single line.
+        \fi
+    \fi
 }
 
 \makeatother
+
+% ----------------------
+% TCOLORBOXES
+\RequirePackage{tcolorbox}
+
+\newtcbox{\titlebox}{
+    enhanced,
+    colupper=white,
+    colback=defini,
+    fontupper=\bfseries,
+    size=small,
+    baseline=3pt,
+    nobeforeafter,
+    frame code={
+            \path[fill=defini] (frame.north west)
+            -- (frame.north east)
+            -- (frame.south east)
+            -- (frame.south west)
+            -- (frame.north west)
+            [sharp corners]-- cycle;
+        }
+}
+
+\newtcbox{\titleboxcorr}{
+    enhanced,
+    colupper=white,
+    colback=th,
+    fontupper=\bfseries,
+    size=small,
+    baseline=3pt,
+    nobeforeafter,
+    frame code={
+            \path[fill=th] (frame.north west)
+            -- (frame.north east)
+            -- (frame.south east)
+            -- (frame.south west)
+            -- (frame.north west)
+            [sharp corners]-- cycle;
+        }
+}
+
+\makeatletter
+\newtcolorbox{resume}[1]{
+    enhanced,
+    skin=bicolor,
+    arc=0pt,
+    coltitle=white,
+    colframe=defini,
+    colback=white,
+    colbacklower=white,
+    fonttitle=\bfseries,
+    detach title,
+    title={#1},
+    before upper*={%
+            \vskip-\dimexpr\kvtcb@boxsep+\kvtcb@top+.1pt
+            \hspace*{-\dimexpr\kvtcb@boxsep+\kvtcb@leftupper+.1pt}%
+            \expandafter\titlebox\expandafter{\tcbtitletext} %
+        }
+}
+
+\newtcolorbox{exocorr}[1]{
+    enhanced,
+    skin=bicolor,
+    arc=0pt,
+    coltitle=white,
+    colframe=th,
+    colback=white,
+    colbacklower=white,
+    fonttitle=\bfseries,
+    detach title,
+    title={#1},
+    before upper*={%
+            \vskip-\dimexpr\kvtcb@boxsep+\kvtcb@top+.1pt
+            \hspace*{-\dimexpr\kvtcb@boxsep+\kvtcb@leftupper+.1pt}%
+            \expandafter\titleboxcorr\expandafter{\tcbtitletext} %
+        }
+}
+
+\newtcolorbox{exotc}[1]{
+    enhanced,
+    skin=bicolor,
+    arc=0pt,
+    coltitle=white,
+    colframe=white,
+    colback=white,
+    colbacklower=white,
+    fonttitle=\bfseries,
+    detach title,
+    title={#1},
+    before upper*={%
+            \vskip-\dimexpr\kvtcb@boxsep+\kvtcb@top+.1pt
+            \hspace*{-\dimexpr\kvtcb@boxsep+\kvtcb@leftupper+.1pt}%
+            \expandafter\titleboxcorr\expandafter{\tcbtitletext} %
+        }
+}
+\makeatother
+% ----------------------
 
 % ---------------------- OPTIONS ----------------------
 % ----------------------
 % COLOR OPTIONS
 \newcommand\ColorSetup[6]{
-	    \definecolor{fg}{HTML}{#1}			       % headers and hyperlinks
-	    \definecolor{fgText}{HTML}{000000}                % Text
-	    \definecolor{bg}{HTML}{FFFFFF}                 % Background
-	    \definecolor{fg2}{HTML}{#2}
-	    \definecolor{th}{HTML}{#3}
-	    \definecolor{defini}{HTML}{#4}
-	    \definecolor{rema}{HTML}{#5}
-	    \definecolor{coro}{HTML}{#6}
+    \definecolor{fg}{HTML}{#1}			       % headers and hyperlinks
+    \definecolor{fgText}{HTML}{000000}                % Text
+    \definecolor{bg}{HTML}{FFFFFF}                 % Background
+    \definecolor{fg2}{HTML}{#2}
+    \definecolor{th}{HTML}{#3}
+    \definecolor{defini}{HTML}{#4}
+    \definecolor{rema}{HTML}{#5}
+    \definecolor{coro}{HTML}{#6}
 
-        %\definecolor{codecom}{HTML}{#8}
-        %\definecolor{codebg}{HTML}{#9}
-        %\definecolor{codekey}{HTML}{#10}
-        %\definecolor{codestr}{HTML}{#11}
-        %\definecolor{codenum}{HTML}{222222}
+    %\definecolor{codecom}{HTML}{#8}
+    %\definecolor{codebg}{HTML}{#9}
+    %\definecolor{codekey}{HTML}{#10}
+    %\definecolor{codestr}{HTML}{#11}
+    %\definecolor{codenum}{HTML}{222222}
 
-	    % Syntax : \MakeThEnv{env-name}{title}{style}{color}{rightline}{leftline}{topline}{bottomline}
-        %          \MakeThEnvStar{env-name}{title}{style}{color}{rightline}{leftline}{topline}{bottomline}
-        %          \MakeMultEnv{env-name}{title}{style}{color}{rightline}{leftline}{topline}{bottomline}{item-label}
+    % Syntax : \MakeThEnv{env-name}{title}{style}{color}{rightline}{leftline}{topline}{bottomline}
+    %          \MakeThEnvStar{env-name}{title}{style}{color}{rightline}{leftline}{topline}{bottomline}
+    %          \MakeMultEnv{env-name}{title}{style}{color}{rightline}{leftline}{topline}{bottomline}{item-label}
 
-	    \MakeThEnv{theo}{Théorème}{plain}{th}{false}{true}{false}{true}
-        \MakeThEnvStar{theo}{Théorème}{plain}{th}{false}{true}{false}{true}
+    \MakeThEnv{theo}{Théorème}{plain}{th}{false}{true}{false}{true}
+    \MakeThEnvStar{theo}{Théorème}{plain}{th}{false}{true}{false}{true}
 
-	    \MakeThEnv{defin}{Définition}{definition}{defini}{false}{true}{false}{true}
-        \MakeThEnvStar{defin}{Définition}{definition}{defini}{false}{true}{false}{true}
+    \MakeThEnv{defin}{Définition}{definition}{defini}{false}{true}{false}{true}
+    \MakeThEnvStar{defin}{Définition}{definition}{defini}{false}{true}{false}{true}
 
-        \MakeThEnvStar{rem}{Remarque}{remark}{rema}{false}{true}{false}{false}
-	    \MakeThEnv{rem}{Remarque}{remark}{rema}{false}{true}{false}{false}
-        \MakeMultEnv{rems}{Remarques}{remark}{rema}{false}{true}{false}{false}{\textbf{\arabic*.}}
+    \MakeThEnvStar{rem}{Remarque}{remark}{rema}{false}{true}{false}{false}
+    \MakeThEnv{rem}{Remarque}{remark}{rema}{false}{true}{false}{false}
+    \MakeMultEnv{rems}{Remarques}{remark}{rema}{false}{true}{false}{false}{\textbf{\arabic*.}}
 
-        \MakeThEnv{prop}{Propriété}{plain}{th}{false}{true}{false}{false}
-	    \MakeThEnvStar{prop}{Propriété}{plain}{th}{false}{true}{false}{false}
-	    \MakeMultEnv{props}{Propriétés}{plain}{th}{false}{true}{false}{false}{\textbf{(\roman*)}}
+    \MakeThEnv{prop}{Propriété}{plain}{th}{false}{true}{false}{false}
+    \MakeThEnvStar{prop}{Propriété}{plain}{th}{false}{true}{false}{false}
+    \MakeMultEnv{props}{Propriétés}{plain}{th}{false}{true}{false}{false}{\textbf{(\roman*)}}
 
-	    \MakeThEnv{lem}{Lemme}{lemme}{fg2}{false}{true}{false}{false}
-        \MakeThEnvStar{lem}{Lemme}{lemme}{fg2}{false}{true}{false}{false}
+    \MakeThEnv{lem}{Lemme}{lemme}{fg2}{false}{true}{false}{false}
+    \MakeThEnvStar{lem}{Lemme}{lemme}{fg2}{false}{true}{false}{false}
 
-        \MakeThEnv{coro}{Corollaire}{definition}{coro}{false}{true}{false}{false}
-	    \MakeThEnvStar{coro}{Corollaire}{definition}{coro}{false}{true}{false}{false}
+    \MakeThEnv{coro}{Corollaire}{definition}{coro}{false}{true}{false}{false}
+    \MakeThEnvStar{coro}{Corollaire}{definition}{coro}{false}{true}{false}{false}
 
-        \MakeThEnv{ex}{Exemple}{definition}{bg}{false}{false}{false}{false}
-	    \MakeThEnvStar{ex}{Exemple}{definition}{coro}{false}{false}{false}{false}
-        \MakeMultEnv{exs}{Exemples}{definition}{coro}{false}{false}{false}{false}{\textbf{\arabic*.}}
+    \MakeThEnv{ex}{Exemple}{definition}{bg}{false}{false}{false}{false}
+    \MakeThEnvStar{ex}{Exemple}{definition}{coro}{false}{false}{false}{false}
+    \MakeMultEnv{exs}{Exemples}{definition}{coro}{false}{false}{false}{false}{\textbf{\arabic*.}}
 
-        \MakeThEnv{exo}{Exercice}{definition}{rema}{false}{true}{false}{false}
-	    \MakeThEnvStar{exo}{Exercice}{definition}{rema}{false}{true}{false}{false}
-        \MakeMultEnv{exos}{Exercices}{definition}{rema}{false}{true}{false}{false}{\textbf{\arabic*.}}
+    \MakeThEnv{exo}{Exercice}{definition}{rema}{false}{true}{false}{false}
+    \MakeThEnvStar{exo}{Exercice}{definition}{rema}{false}{true}{false}{false}
+    \MakeMultEnv{exos}{Exercices}{definition}{rema}{false}{true}{false}{false}{\textbf{\arabic*.}}
 
-        \MakeThEnv{meth}{Méthode}{definition}{fg}{false}{true}{true}{false}
-	    \MakeThEnvStar{meth}{Méthode}{definition}{fg}{false}{true}{true}{false}
-        \MakeMultEnv{meths}{Méthode}{definition}{fg}{false}{true}{true}{false}{\textbf{\arabic*.}}
+    \MakeThEnv{meth}{Méthode}{definition}{fg}{false}{true}{true}{false}
+    \MakeThEnvStar{meth}{Méthode}{definition}{fg}{false}{true}{true}{false}
+    \MakeMultEnv{meths}{Méthode}{definition}{fg}{false}{true}{true}{false}{\textbf{\arabic*.}}
 
-	    \MakeDmEnv{bg}
-        \newenvironment{rep}{\begin{demo}[Réponse]}{\end{demo}}
-        \newenvironment{reps}{\begin{demo}[Réponses]}{\end{demo}}
+    \MakeDmEnv{bg}
+    \newenvironment{rep}{\begin{demo}[Réponse]}{\end{demo}}
+    \newenvironment{reps}{\begin{demo}[Réponses]}{\end{demo}}
 }
 
 % Option commands in "options.sty" file
 
-\input{../MyCourse/ceri/sty/options.sty}
+\input{ceri/sty/options.sty}
 % ----------------------
 
 % ----------------------
